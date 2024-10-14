@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffec } from "react";
+import { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
