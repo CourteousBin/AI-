@@ -36,8 +36,7 @@ import {
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const clientId = process.env.WEB3_AUTH_CLIENT_ID;
-console.log("clientId");
-console.log(clientId);
+
 // EIP-155：这是以太坊改进提案（Ethereum Improvement Proposal）的一部分，旨在引入链ID（chain ID）的概念。
 // EIP-155 允许以太坊及其兼容链（如许多 Layer 2 解决方案和其他 EVM 兼容链）使用唯一的链ID，以防止交易重放攻击。
 const chainConfig = {
@@ -77,6 +76,7 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
   const [balance, setBalance] = useState(0);
 
   console.log("user info", userInfo);
+  
   useEffect(() => {
     const init = async () => {
       try {
@@ -241,7 +241,7 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
   }
 
   return (
-    <header className="bg-white border-b border-gray-200 top-0 z-50">
+    <header className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
       <div className="flex items-center justify-between px-4 py-2">
         <div className="flex items-center">
           <Button

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
+// import 'leaflet/dist/leaflet.css'
 import { Toaster } from "react-hot-toast";
 
 // head

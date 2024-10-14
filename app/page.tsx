@@ -12,6 +12,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
+import { getRecentReports, getAllRewards, getWasteCollectionTasks } from '@/utils/db/actions'
+
 
 const poppins = Poppins({
   weight: ["300", "400", "600"],
@@ -40,8 +42,53 @@ export default function Home() {
     co2Offset: 0,
   });
 
+  useEffect(() => {
+    async function fetchImpactData() {
+      try {
+        const reports = await getRecentReports(100); // Fetch last 100 reports
+        const rewards = await getAllRewards();
+        const tasks = await getWasteCollectionTasks(100); // Fetch last 100 tasks
+
+        const wasteCollected = tasks.reduce((total, task) => {
+          const match = task.amount.match(/(\d+(\.\d+)?)/);
+          const amount = match ? parseFloat(match[0]) : 0;
+          return total + amount;
+        }, 0);
+
+        const reportsSubmitted = reports.length;
+        const tokensEarned = rewards.reduce(
+          (total, reward) => total + (reward.points || 0),
+          0
+        );
+        const co2Offset = wasteCollected * 0.5; // Assuming 0.5 kg CO2 offset per kg of waste
+
+        setImpactData({
+          wasteCollected: Math.round(wasteCollected * 10) / 10, // Round to 1 decimal place
+          reportsSubmitted,
+          tokensEarned,
+          co2Offset: Math.round(co2Offset * 10) / 10, // Round to 1 decimal place
+        });
+      } catch (error) {
+        console.error("Error fetching impact data:", error);
+        // Set default values in case of error
+        setImpactData({
+          wasteCollected: 0,
+          reportsSubmitted: 0,
+          tokensEarned: 0,
+          co2Offset: 0,
+        });
+      }
+    }
+
+    fetchImpactData();
+  }, []);
+
+  const login = () => {
+    setLoggedIn(true);
+  };
+
   return (
-    <div className={`container mx-auto px-4 py-16`}>
+    <div className={`container mx-auto px-4 py-16 ${poppins.className}`}>
       <section className="text-center mb-20">
         <AnimatedGlobe />
         <h1 className="text-6xl font-bold mb-6 text-gray-800 tracking-tight">
