@@ -1,0 +1,55 @@
+{
+  "name": "AI智慧垃圾收集平台",
+  "version": "1.0.0",
+  "description": "一个AI的环保应用，利用人工智能技术提升垃圾管理效率，鼓励社区用户主动报告和清理垃圾，促进可持续环境保护。",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "drizzle-kit push",
+    "db:studio": "npx drizzle-kit studio"
+  },
+  "keywords": [
+    "AI",
+    "垃圾管理",
+    "环保",
+    "社区清洁"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@react-google-maps/api": "^2.20.3",
+    "@web3auth/base": "^9.2.2",
+    "@web3auth/ethereum-provider": "^9.2.2",
+    "@web3auth/modal": "^9.2.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "^0.34.1",
+    "lucide-react": "^0.452.0",
+    "next": "14.2.15",
+    "pg": "^8.13.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "tailwind-merge": "^2.5.3",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "drizzle-kit": "^0.25.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.15",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "type": "module"
+}
