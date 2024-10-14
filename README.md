@@ -74,8 +74,9 @@ AI 智慧垃圾收集平台是一款创新的环保应用，旨在利用人工�
 1. 克隆代码库：
 
    ```bash
-   git clone
-   cd
+   git clone git@github.com:CourteousBin/AI-Smart-Trash-Collection.git
+
+   cd AI-Smart-Trash-Collection
    ```
 
 2. 安装依赖：
